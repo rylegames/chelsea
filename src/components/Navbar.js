@@ -46,14 +46,20 @@ const Navbar = class extends React.Component {
 
   componentWillMount() {
     if (window && window.addEventListener && window.location) {
-      this.setState({ parts: window.location.pathname.split("/") });
+      this.setState({
+        parts: window.location.pathname.split("/"),
+        pathname: window.location.pathname,
+      });
       window.addEventListener("mousedown", this.handleClick, false);
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (window && window.location) {
-      this.setState({ parts: window.location.pathname.split("/") });
+  componentDidUpdate(prevProps, prevState) {
+    if (window && this.state.pathname !== window.location.pathname) {
+      this.setState({
+        parts: window.location.pathname.split("/"),
+        pathname: window.location.pathname,
+      });
     }
   }
 
@@ -76,7 +82,7 @@ const Navbar = class extends React.Component {
     // const parts = pathname.split("/");
     return (
       <div css={style}>
-        <div>Chelsea</div>
+        <Link to="/">Chelsea</Link>
         {parts[1] === "blog" && <FaEnvelopeOpenText />}
         {parts[1] === "project" && <FaThumbtack />}
         {parts[1] === "press" && <FaNewspaper />}
