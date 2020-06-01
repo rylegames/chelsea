@@ -7,7 +7,7 @@ const FeatureGrid = ({ gridItems }) => (
     {gridItems.map((item) => (
       <div key={item.text} className="column is-6">
         <section className="section">
-          <a href={item.link} target="_blank">
+          <a href={item.link} target="_blank" rel="noopener noreferrer">
             <div className="has-text-centered">
               <div
                 style={{
@@ -31,6 +31,7 @@ FeatureGrid.propTypes = {
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       text: PropTypes.string,
+      link: PropTypes.string,
     })
   ),
 };

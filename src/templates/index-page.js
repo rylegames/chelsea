@@ -230,6 +230,7 @@ export const pageQuery = graphql`
               }
             }
             text
+            link
           }
           heading
           description
