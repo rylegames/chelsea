@@ -1,9 +1,32 @@
-import React from 'react'
+/** @jsx jsx */
 
-import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+import React from "react";
+import { css, jsx } from "@emotion/core";
+
+import Layout from "../../components/Layout";
+import BlogRoll from "../../components/BlogRoll";
+
+const style = css`
+  padding: 0 20px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+`;
 
 export default class BlogIndexPage extends React.Component {
+  render() {
+    return (
+      <Layout>
+        <div css={style}>
+          <img src={"/img/blog-index.jpg"} />
+          <BlogRoll />
+        </div>
+      </Layout>
+    );
+  }
+}
+
+class OldBlogIndexPage extends React.Component {
   render() {
     return (
       <Layout>
@@ -16,10 +39,10 @@ export default class BlogIndexPage extends React.Component {
           <h1
             className="has-text-weight-bold is-size-1"
             style={{
-              boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-              backgroundColor: '#f40',
-              color: 'white',
-              padding: '1rem',
+              boxShadow: "0.5rem 0 0 #f40, -0.5rem 0 0 #f40",
+              backgroundColor: "#f40",
+              color: "white",
+              padding: "1rem",
             }}
           >
             Latest Stories
@@ -33,6 +56,6 @@ export default class BlogIndexPage extends React.Component {
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }

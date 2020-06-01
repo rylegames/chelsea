@@ -1,12 +1,56 @@
+/** @jsx jsx */
+
 import React from "react";
 import PropTypes from "prop-types";
+import { css, jsx } from "@emotion/core";
+
 import { kebabCase } from "lodash";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
+const style = css`
+  padding: 0 20px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+`;
+
 export const ProjectPostTemplate = ({
+  content,
+  contentComponent,
+  description,
+  tags,
+  title,
+  helmet,
+}) => {
+  const PostContent = contentComponent || Content;
+
+  return (
+    <div css={style}>
+      {helmet || ""}
+      <h1> {title}</h1>
+      <p>{description}</p>
+      <PostContent content={content} />
+      <br />
+      {tags && tags.length && (
+        <div>
+          <h4>Tags</h4>
+          <ul className="taglist">
+            {tags.map((tag) => (
+              <li key={tag + `tag`}>
+                <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const OldProjectPostTemplate = ({
   content,
   contentComponent,
   description,

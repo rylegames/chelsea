@@ -26,6 +26,7 @@ const style = css`
   width: 100%;
   max-width: 680px;
   padding: 0 20px;
+  position: relative;
 
   .profile {
     .info {
@@ -33,12 +34,23 @@ const style = css`
   }
 
   .links {
+    display: flex;
+
     a {
+      display: flex;
+      align-items: center;
       margin-right: 20px;
+
+      svg {
+        margin-right: 4px;
+      }
     }
   }
 
   .menu {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+
     a {
       padding: 20px 0;
       font-size: 30px;
@@ -64,7 +76,6 @@ const Footer = class extends React.Component {
   render() {
     return (
       <div css={style}>
-        <br />
         <div className="profile">
           <div className="info">
             <img />
@@ -110,7 +121,7 @@ const Footer = class extends React.Component {
         </div>
         <br />
         <br />
-        ©2018 <Link to="/">Chelsea Vuong</Link> and site created by{" "}
+        ©2020 <Link to="/">Chelsea Vuong</Link> and site created by{" "}
         <a href="https://ryanylee.com" target="_blank">
           Ryan Y. Lee
         </a>

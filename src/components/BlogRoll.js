@@ -8,13 +8,21 @@ import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
 const style = css`
   > a {
+    margin-left: -20px;
+    width: calc(100% + 40px);
     display: block;
+    padding: 30px 20px;
+    border-bottom: 1px solid lightgrey;
+
+    &:first-of-type {
+      border-top: 1px solid lightgrey;
+    }
   }
 `;
 
 class BlogRoll extends React.Component {
   render() {
-    const { data } = this.props;
+    const { data, featuredOnly } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
 
     return (
@@ -23,7 +31,14 @@ class BlogRoll extends React.Component {
           posts.map(({ node: post }) => {
             const { id, frontmatter, fields, excerpt } = post;
             const { featuredpost, featuredimage, title, date } = frontmatter;
-            return <Link to={fields.slug}>{title}</Link>;
+
+            if (!featuredOnly || (featuredOnly && featuredpost))
+              return (
+                <Link to={fields.slug}>
+                  <h1>{title}</h1>
+                  <div>{date}</div>
+                </Link>
+              );
           })}
       </div>
     );

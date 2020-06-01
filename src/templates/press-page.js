@@ -1,13 +1,55 @@
+/** @jsx jsx */
+
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { css, jsx } from "@emotion/core";
+
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
+const style = css`
+  padding: 0 20px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+`;
+
 export const PressPageTemplate = ({
+  image,
+  title,
+  heading,
+  description,
+  intro,
+  main,
+  testimonials,
+  fullImage,
+  pricing,
+}) => (
+  <div css={style}>
+    <img
+      src={!!image.childImageSharp ? image.childImageSharp.fluid.src : image}
+    />
+    <h1>{title}</h1>
+    <h1>{heading}</h1>
+    <p>{description}</p>
+    <h3>{main.heading}</h3>
+    <p>{main.description}</p>
+    <PreviewCompatibleImage imageInfo={main.image1} />
+    <PreviewCompatibleImage imageInfo={main.image2} />
+    <PreviewCompatibleImage imageInfo={main.image3} />
+    <Features gridItems={intro.blurbs} />
+    <Testimonials testimonials={testimonials} />
+    <h2>{pricing.heading}</h2>
+    <p>{pricing.description}</p>
+    <Pricing data={pricing.plans} />
+  </div>
+);
+
+export const OldPressPageTemplate = ({
   image,
   title,
   heading,

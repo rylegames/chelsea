@@ -26,13 +26,17 @@ const style = css`
   justify-content: space-between;
 
   .menu {
-    display: none;
     position: fixed;
-    top: -100px;
-    left: 0px;
+    top: -200px;
     width: 100%;
-    height: 20px;
+    margin-left: -20px;
+    max-width: 680px;
     background: grey;
+    transition: top 0.2s;
+
+    > a {
+      display: block;
+    }
 
     &.show {
       top: 0px;
@@ -82,14 +86,22 @@ const Navbar = class extends React.Component {
     // const parts = pathname.split("/");
     return (
       <div css={style}>
-        <Link to="/">Chelsea</Link>
-        <Link to={"/" + parts[1]}>
-          {parts[1] === "blog" && <FaEnvelopeOpenText />}
-          {parts[1] === "project" && <FaThumbtack />}
-          {parts[1] === "press" && <FaNewspaper />}
-          {parts[1] === "about" && <FaIdCard />}
-        </Link>
-        <div onClick={() => this.setState({ menu: !menu })}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/">Chelsea</Link>
+          <Link
+            to={"/" + parts[1]}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            {parts[1] === "blog" && <FaEnvelopeOpenText />}
+            {parts[1] === "project" && <FaThumbtack />}
+            {parts[1] === "press" && <FaNewspaper />}
+            {parts[1] === "about" && <FaIdCard />}
+          </Link>
+        </div>
+        <div
+          onClick={() => this.setState({ menu: !menu })}
+          style={{ cursor: "pointer" }}
+        >
           <FaBars />
         </div>
         <div
@@ -97,7 +109,23 @@ const Navbar = class extends React.Component {
           ref={(menu) => {
             this.menu = menu;
           }}
-        ></div>
+          onClick={() => this.setState({ menu: false })}
+        >
+          <div>x</div>
+          <Link to="/">Chelsea</Link>
+          <Link to="/blog">
+            <FaEnvelopeOpenText /> Blog
+          </Link>
+          <Link to="/press">
+            <FaNewspaper /> Press
+          </Link>
+          <Link to="/project">
+            <FaThumbtack /> Projects
+          </Link>
+          <Link to="/about">
+            <FaIdCard /> About
+          </Link>
+        </div>
       </div>
     );
   }

@@ -8,7 +8,15 @@ import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
 const style = css`
   > a {
+    margin-left: -20px;
+    width: calc(100% + 40px);
     display: block;
+    padding: 30px 20px;
+    border-bottom: 1px solid lightgrey;
+
+    &:first-of-type {
+      border-top: 1px solid lightgrey;
+    }
   }
 `;
 
@@ -23,7 +31,12 @@ class ProjectRoll extends React.Component {
           posts.map(({ node: post }) => {
             const { id, frontmatter, fields, excerpt } = post;
             const { featuredpost, featuredimage, title, date } = frontmatter;
-            return <Link to={fields.slug}>{title}</Link>;
+            return (
+              <Link to={fields.slug}>
+                <h1>{title}</h1>
+                <div>{date}</div>
+              </Link>
+            );
           })}
       </div>
     );

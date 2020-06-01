@@ -1,13 +1,53 @@
+/** @jsx jsx */
+
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
+import { css, jsx } from "@emotion/core";
 
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import ProjectRoll from "../components/ProjectRoll";
 
+const style = css`
+  padding: 0 20px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+`;
+
 export const IndexPageTemplate = ({
+  image,
+  title,
+  heading,
+  subheading,
+  mainpitch,
+  description,
+  intro,
+}) => (
+  <div css={style}>
+    <img
+      src={`${
+        !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+      }`}
+    />
+    <h1>{title}</h1>
+    <h3>{subheading}</h3>
+    <h1 className="title">{mainpitch.title}</h1>
+    <h3 className="subtitle">{mainpitch.description}</h3>
+    <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
+    <p>{description}</p>
+    <h1>Blog</h1>
+    <BlogRoll featuredOnly />
+    <h1>Projects</h1>
+    <ProjectRoll />
+    <h1>Press</h1>
+    <Features gridItems={intro.blurbs} />
+  </div>
+);
+
+export const OldIndexPageTemplate = ({
   image,
   title,
   heading,
