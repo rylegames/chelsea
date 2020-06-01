@@ -42,15 +42,25 @@ const style = css`
 `;
 
 const Navbar = class extends React.Component {
-  state = { menu: false };
+  state = { menu: false, parts: [] };
 
-  // componentWillMount() {
-  //   window.addEventListener("mousedown", this.handleClick, false);
-  // }
+  componentWillMount() {
+    if (window && window.addEventListener && window.location) {
+      this.setState({ parts: window.location.pathname.split("/") });
+      window.addEventListener("mousedown", this.handleClick, false);
+    }
+  }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("mousedown", this.handleClick, false);
-  // }
+  componentDidUpdate(prevProps) {
+    if (window && window.location) {
+      this.setState({ parts: window.location.pathname.split("/") });
+    }
+  }
+
+  componentWillUnmount() {
+    if (window && window.removeEventListener)
+      window.removeEventListener("mousedown", this.handleClick, false);
+  }
 
   handleClick = (e) => {
     if (this.menu.contains(e.target)) {
@@ -61,10 +71,9 @@ const Navbar = class extends React.Component {
   };
 
   render() {
-    const { menu } = this.state;
+    const { menu, parts } = this.state;
     // const { pathname } = window.location;
     // const parts = pathname.split("/");
-    const parts = ["", ""];
     return (
       <div css={style}>
         <div>Chelsea</div>
