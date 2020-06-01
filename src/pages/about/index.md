@@ -3,9 +3,8 @@ templateKey: about-page
 path: /about
 title: About me
 ---
-![](/img/laughing.jpg)
 
-<br/>
+![](/img/laughing.jpg)
 
 Born and raised in the Bay Area, Chelsea Vuong is a student at Harvard University majoring in Economics and minoring in Global Health and Health Policy. She is currently the Co-President of the Personal Finance and Consulting Group at Harvard, the first student-run organization that inspires and educates students and community members about the importance of financial literacy. Additionally, she is involved in the Miss America Organization, where she was formerly Miss Golden Gate 2018 and Miss Cambridge 2019. Last summer, she competed for the title of Miss Massachusetts, placing in the Top 10.
 

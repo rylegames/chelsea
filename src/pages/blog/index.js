@@ -17,7 +17,7 @@ export default class BlogIndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <div css={style}>
+        <div css={style} className="container content">
           <img src={"/img/blog-index.jpg"} />
           <BlogRoll />
         </div>

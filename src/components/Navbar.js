@@ -14,6 +14,7 @@ import {
   FaThumbtack,
   FaEnvelopeOpenText,
   FaIdCard,
+  FaTimes,
 } from "react-icons/fa";
 
 const style = css`
@@ -25,22 +26,89 @@ const style = css`
   display: flex;
   justify-content: space-between;
 
+  .logo {
+    font-size: 24px;
+    border: 4px solid lightgrey;
+    border-radius: 4px;
+    padding: 4px 10px;
+
+    &:hover {
+      background: lightgrey;
+      color: white;
+    }
+  }
+
+  .route {
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 28px;
+
+    &:hover {
+      background: lightgrey;
+      color: white;
+      border-radius: 4px;
+    }
+  }
+
+  .menu-button {
+    padding: 10px;
+    margin-right: -10px;
+    border-radius: 4px;
+    font-size: 28px;
+
+    &:hover {
+      background: lightgrey;
+      color: white;
+    }
+  }
+
   .menu {
     position: fixed;
-    top: -200px;
+    z-index: 1;
+    top: -680px;
     width: 100%;
+    height: 100vw;
+    max-height: 680px;
     margin-left: -20px;
     max-width: 680px;
     background: grey;
     transition: top 0.2s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr 1fr;
 
     > a {
-      display: block;
+      grid-column: span 2 / auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+
+    .home {
+      grid-column: 3 span / auto;
+      justify-content: flex-start;
+      padding: 20px;
+    }
+
+    .close {
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
     }
 
     &.show {
       top: 0px;
-      display: block;
     }
   }
 `;
@@ -87,20 +155,26 @@ const Navbar = class extends React.Component {
     return (
       <div css={style}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Link to="/">Chelsea</Link>
-          <Link
-            to={"/" + parts[1]}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            {parts[1] === "blog" && <FaEnvelopeOpenText />}
-            {parts[1] === "project" && <FaThumbtack />}
-            {parts[1] === "press" && <FaNewspaper />}
-            {parts[1] === "about" && <FaIdCard />}
+          <Link to="/" className="logo">
+            Chelsea
           </Link>
+          {parts[1] && (
+            <Link
+              className="route"
+              to={"/" + parts[1]}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              {parts[1] === "blog" && <FaEnvelopeOpenText />}
+              {parts[1] === "project" && <FaThumbtack />}
+              {parts[1] === "press" && <FaNewspaper />}
+              {parts[1] === "about" && <FaIdCard />}
+            </Link>
+          )}
         </div>
         <div
+          className="menu-button"
           onClick={() => this.setState({ menu: !menu })}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
         >
           <FaBars />
         </div>
@@ -111,8 +185,12 @@ const Navbar = class extends React.Component {
           }}
           onClick={() => this.setState({ menu: false })}
         >
-          <div>x</div>
-          <Link to="/">Chelsea</Link>
+          <Link to="/" className="home">
+            Chelsea
+          </Link>
+          <div className="close">
+            <FaTimes />
+          </div>
           <Link to="/blog">
             <FaEnvelopeOpenText /> Blog
           </Link>
@@ -127,98 +205,6 @@ const Navbar = class extends React.Component {
           </Link>
         </div>
       </div>
-    );
-  }
-};
-
-const OldNavbar = class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-      navBarActiveClass: "",
-    };
-  }
-
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: "is-active",
-            })
-          : this.setState({
-              navBarActiveClass: "",
-            });
-      }
-    );
-  };
-
-  render() {
-    return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
     );
   }
 };
