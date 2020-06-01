@@ -62,8 +62,9 @@ const Navbar = class extends React.Component {
 
   render() {
     const { menu } = this.state;
-    const { pathname } = window.location;
-    const parts = pathname.split("/");
+    // const { pathname } = window.location;
+    // const parts = pathname.split("/");
+    const parts = ["", ""];
     return (
       <div css={style}>
         <div>Chelsea</div>
