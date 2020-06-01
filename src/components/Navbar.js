@@ -44,11 +44,12 @@ const Navbar = class extends React.Component {
   state = { menu: false };
 
   componentWillMount() {
-    document.addEventListener("mousedown", this.handleClick, false);
+    document && document.addEventListener("mousedown", this.handleClick, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClick, false);
+    document &&
+      document.removeEventListener("mousedown", this.handleClick, false);
   }
 
   handleClick = (e) => {
