@@ -223,6 +223,7 @@ export const pressPageQuery = graphql`
                 }
               }
             }
+            link
             text
           }
           heading

@@ -183,6 +183,7 @@ collections:
                       [
                         { label: Image, name: image, widget: image },
                         { label: Text, name: text, widget: text },
+                        { label: Link, name: link, widget: text },
                       ],
                   },
                 ],
