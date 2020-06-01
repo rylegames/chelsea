@@ -1,19 +1,14 @@
 ---
-templateKey: 'about-page'
+templateKey: about-page
 path: /about
-title: About our values
+title: About me
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
+![](/img/laughing.jpg)
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+<br/>
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
+Born and raised in the Bay Area, Chelsea Vuong is a student at Harvard University majoring in Economics and minoring in Global Health and Health Policy. She is currently the Co-President of the Personal Finance and Consulting Group at Harvard, the first student-run organization that inspires and educates students and community members about the importance of financial literacy. Additionally, she is involved in the Miss America Organization, where she was formerly Miss Golden Gate 2018 and Miss Cambridge 2019. Last summer, she competed for the title of Miss Massachusetts, placing in the Top 10.
 
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
+Chelsea is currently working as an Investment Management Analyst at Goldman Sachs. Prior to this position, she was a Strategy Consultant for Athletes for Hope, a nonprofit organization that helps connect athletes to charitable causes. This was not her first position in the sports industry, as she was also a Community Relations Coordinator for the San Jose Earthquakes. Her love for sports brought her towards the sports indsutry, and you can always count her in to attend or watch any sporting event!
 
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+In her spare time, Chelsea enjoys running, dancing, drawing, creating music, and starting new initiatives. She was formerly on the Harvard Crimson Dance Team, placing Top 15 at the Universal Dance Association National Dance Team Championships. She has also won multiple preliminary talent awards at the Miss California and Miss Massachusetts competitions.
