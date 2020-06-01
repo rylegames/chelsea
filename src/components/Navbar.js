@@ -3,6 +3,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { css, jsx } from "@emotion/core";
+import window from "global";
 
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
@@ -44,15 +45,11 @@ const Navbar = class extends React.Component {
   state = { menu: false };
 
   componentWillMount() {
-    if (typeof window !== "undefined") {
-      window.addEventListener("mousedown", this.handleClick, false);
-    }
+    window.addEventListener("mousedown", this.handleClick, false);
   }
 
   componentWillUnmount() {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("mousedown", this.handleClick, false);
-    }
+    window.removeEventListener("mousedown", this.handleClick, false);
   }
 
   handleClick = (e) => {
