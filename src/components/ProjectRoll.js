@@ -1,9 +1,36 @@
+/** @jsx jsx */
+
 import React from "react";
 import PropTypes from "prop-types";
+import { css, jsx } from "@emotion/core";
 import { Link, graphql, StaticQuery } from "gatsby";
 import PreviewCompatibleImage from "./PreviewCompatibleImage";
 
+const style = css`
+  > a {
+    display: block;
+  }
+`;
+
 class ProjectRoll extends React.Component {
+  render() {
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
+
+    return (
+      <div css={style}>
+        {posts &&
+          posts.map(({ node: post }) => {
+            const { id, frontmatter, fields, excerpt } = post;
+            const { featuredpost, featuredimage, title, date } = frontmatter;
+            return <Link to={fields.slug}>{title}</Link>;
+          })}
+      </div>
+    );
+  }
+}
+
+class ProjectRollOld extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;

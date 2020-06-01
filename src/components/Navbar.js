@@ -83,10 +83,12 @@ const Navbar = class extends React.Component {
     return (
       <div css={style}>
         <Link to="/">Chelsea</Link>
-        {parts[1] === "blog" && <FaEnvelopeOpenText />}
-        {parts[1] === "project" && <FaThumbtack />}
-        {parts[1] === "press" && <FaNewspaper />}
-        {parts[1] === "about" && <FaIdCard />}
+        <Link to={"/" + parts[1]}>
+          {parts[1] === "blog" && <FaEnvelopeOpenText />}
+          {parts[1] === "project" && <FaThumbtack />}
+          {parts[1] === "press" && <FaNewspaper />}
+          {parts[1] === "about" && <FaIdCard />}
+        </Link>
         <div onClick={() => this.setState({ menu: !menu })}>
           <FaBars />
         </div>

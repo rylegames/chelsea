@@ -153,7 +153,7 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
 
-      - file: "src/pages/products/index.md"
+      - file: "src/pages/press/index.md"
         label: "Press Page"
         name: "press"
         fields:
@@ -161,7 +161,7 @@ collections:
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "product-page",
+              default: "press-page",
             }
           - { label: Title, name: title, widget: string }
           - { label: Image, name: image, widget: image }
