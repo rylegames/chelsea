@@ -94,13 +94,16 @@ const Footer = class extends React.Component {
           <a href="mailto:chelseavuongmao@gmail.com" target="_blank">
             <FaInbox /> email
           </a>
-          <a href="https://facebook.com" target="_blank">
+          <a href="https://www.facebook.com/chelsea.vuong.7" target="_blank">
             <FaFacebookSquare /> facebook
           </a>
-          <a href="https://instagram.com" target="_blank">
+          <a href="https://www.instagram.com/chelseavuong/" target="_blank">
             <FaInstagram /> instagram
           </a>
-          <a href="https://linkedin.com" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/chelsea-vuong-6a3b12132/"
+            target="_blank"
+          >
             <FaLinkedin /> linkedin
           </a>
         </div>
