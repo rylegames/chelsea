@@ -44,13 +44,13 @@ const style = css`
 const Navbar = class extends React.Component {
   state = { menu: false };
 
-  componentWillMount() {
-    window.addEventListener("mousedown", this.handleClick, false);
-  }
+  // componentWillMount() {
+  //   window.addEventListener("mousedown", this.handleClick, false);
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener("mousedown", this.handleClick, false);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("mousedown", this.handleClick, false);
+  // }
 
   handleClick = (e) => {
     if (this.menu.contains(e.target)) {
