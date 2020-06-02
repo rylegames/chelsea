@@ -29,14 +29,12 @@ class BlogRoll extends React.Component {
   render() {
     const { data, featuredOnly } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
-
     return (
       <div css={style}>
         {posts &&
           posts.map(({ node: post }) => {
             const { id, frontmatter, fields, excerpt } = post;
             const { featuredpost, featuredimage, title, date } = frontmatter;
-
             if (!featuredOnly || (featuredOnly && featuredpost))
               return (
                 <Link to={fields.slug}>
@@ -113,7 +111,7 @@ BlogRoll.propTypes = {
   }),
 };
 
-export default () => (
+export default ({ featuredOnly }) => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -146,6 +144,8 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={(data, count) => (
+      <BlogRoll data={data} count={count} featuredOnly={featuredOnly} />
+    )}
   />
 );

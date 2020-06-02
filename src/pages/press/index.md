@@ -19,6 +19,7 @@ intro:
         local communities. Check our post or contact us directly for current
         availability.
       link: https://chelseavuong.com/
+      featured: true
     - image: /img/coffee-gear.png
       text: >
         We offer a small, but carefully curated selection of brewing gear and
@@ -26,6 +27,7 @@ intro:
         own beans or just bought your first french press, you’ll find a gadget
         to fall in love with in our shop.
       link: https://chelseavuong.com/
+      featured: true
     - image: /img/tutorials.png
       text: >
         Love a great cup of coffee, but never knew how to make one? Bought a
@@ -34,6 +36,7 @@ intro:
         to learn anything you want to know about coffee roasting and brewing.
         Email us or call the store for details.
       link: https://chelseavuong.com/
+      featured: true
     - image: /img/meeting-space.png
       text: >
         We believe that good coffee has the power to bring people together.
@@ -42,6 +45,7 @@ intro:
         coffee making techniques. All of the artwork on display there is for
         sale. The full price you pay goes to the artist.
       link: https://chelseavuong.com/
+      featured: true
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their

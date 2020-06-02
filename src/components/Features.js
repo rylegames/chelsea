@@ -3,27 +3,31 @@ import { StaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
-const FeatureGrid = ({ gridItems }) => (
+const FeatureGrid = ({ gridItems, featuredOnly }) => (
   <div className="columns is-multiline">
-    {gridItems.map((item) => (
-      <div key={item.text} className="column is-6">
-        <section className="section">
-          <a href={item.link} target="_blank" rel="noopener noreferrer">
-            <div className="has-text-centered">
-              <div
-                style={{
-                  width: "240px",
-                  display: "inline-block",
-                }}
-              >
-                <PreviewCompatibleImage imageInfo={item} />
-              </div>
-            </div>
-            <p>{item.text}</p>
-          </a>
-        </section>
-      </div>
-    ))}
+    {gridItems.map((item) => {
+      console.log(featuredOnly, item);
+      if (!featuredOnly || (featuredOnly && item.featured))
+        return (
+          <div key={item.text} className="column is-6">
+            <section className="section">
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <div className="has-text-centered">
+                  <div
+                    style={{
+                      width: "240px",
+                      display: "inline-block",
+                    }}
+                  >
+                    <PreviewCompatibleImage imageInfo={item} />
+                  </div>
+                </div>
+                <p>{item.text}</p>
+              </a>
+            </section>
+          </div>
+        );
+    })}
   </div>
 );
 
@@ -37,7 +41,7 @@ FeatureGrid.propTypes = {
   ),
 };
 
-export default () => (
+export default ({ featuredOnly }) => (
   <StaticQuery
     query={graphql`
       query Features {
@@ -55,6 +59,7 @@ export default () => (
                 }
                 link
                 text
+                featured
               }
               heading
               description
@@ -65,7 +70,10 @@ export default () => (
     `}
     render={(data, count) => {
       return (
-        <FeatureGrid gridItems={data.markdownRemark.frontmatter.intro.blurbs} />
+        <FeatureGrid
+          gridItems={data.markdownRemark.frontmatter.intro.blurbs}
+          featuredOnly={featuredOnly}
+        />
       );
     }}
   />

@@ -27,21 +27,21 @@ const style = css`
 
 class ProjectRoll extends React.Component {
   render() {
-    const { data } = this.props;
+    const { data, featuredOnly } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
-
     return (
       <div css={style}>
         {posts &&
           posts.map(({ node: post }) => {
             const { id, frontmatter, fields, excerpt } = post;
             const { featuredpost, featuredimage, title, date } = frontmatter;
-            return (
-              <Link to={fields.slug}>
-                <h1>{title}</h1>
-                <div>{date}</div>
-              </Link>
-            );
+            if (!featuredOnly || (featuredOnly && featuredpost))
+              return (
+                <Link to={fields.slug}>
+                  <h1>{title}</h1>
+                  <div>{date}</div>
+                </Link>
+              );
           })}
       </div>
     );
@@ -111,7 +111,7 @@ ProjectRoll.propTypes = {
   }),
 };
 
-export default () => (
+export default ({ featuredOnly }) => (
   <StaticQuery
     query={graphql`
       query ProjectRollQuery {
@@ -144,6 +144,8 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <ProjectRoll data={data} count={count} />}
+    render={(data, count) => (
+      <ProjectRoll data={data} count={count} featuredOnly={featuredOnly} />
+    )}
   />
 );

@@ -32,7 +32,7 @@ export const IndexPageTemplate = ({
         !!image.childImageSharp ? image.childImageSharp.fluid.src : image
       }`}
     />
-    <div style={{ textAlign: "center" }}>{title}</div>
+    <div style={{ textAlign: "center" }}>{heading}</div>
     <div style={{ textAlign: "center" }}>{subheading}</div>
     <br />
     <div className="content">
@@ -45,16 +45,22 @@ export const IndexPageTemplate = ({
     </div>
     <div className="columns">
       <div className="column is-12">
-        <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
+        <h3 className="has-text-weight-semibold is-size-2">{title}</h3>
         <p>{description}</p>
       </div>
     </div>
-    <h1>Blog</h1>
+    <Link to="/blog">
+      <h1>Blog</h1>
+    </Link>
     <BlogRoll featuredOnly />
-    <h1>Projects</h1>
+    <Link to="/project">
+      <h1>Projects</h1>
+    </Link>
     <ProjectRoll />
-    <h1>Press</h1>
-    <Features />
+    <Link to="/press">
+      <h1>Press</h1>
+    </Link>
+    <Features featuredOnly />
   </div>
 );
 

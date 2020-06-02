@@ -38,11 +38,9 @@ export const PressPageTemplate = ({
     <p>{description}</p>
     <h3>{main.heading}</h3>
     <p>{main.description}</p>
-    <PreviewCompatibleImage imageInfo={main.image1} />
-    <PreviewCompatibleImage imageInfo={main.image2} />
-    <PreviewCompatibleImage imageInfo={main.image3} />
     <Features gridItems={intro.blurbs} />
     <Testimonials testimonials={testimonials} />
+    <br />
   </div>
 );
 
@@ -119,6 +117,7 @@ export const pressPageQuery = graphql`
             }
             link
             text
+            featured
           }
           heading
           description
