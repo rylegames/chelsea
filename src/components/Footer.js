@@ -1,8 +1,9 @@
 /** @jsx jsx */
 
 import React from "react";
-import { Link } from "gatsby";
+import { Link, StaticQuery } from "gatsby";
 import { css, jsx } from "@emotion/core";
+import { get } from "lodash/get";
 
 import logo from "../img/logo.svg";
 import facebook from "../img/social/facebook.svg";
@@ -79,36 +80,42 @@ const style = css`
 
 const Footer = class extends React.Component {
   render() {
+    const { data } = this.props;
+    const {
+      name,
+      tagline,
+      description,
+      emailAddress,
+      facebookLink,
+      instagramLink,
+      linkedinLink,
+      profileImage,
+    } = data.markdownRemark.frontmatter;
+
     return (
       <div css={style} className="container content">
         <div className="profile">
           <div className="info">
             <img />
             <div>
-              <h2 className="name">Chelsea Vuong</h2>
-              <h4 className="tagline">Harvard '21, Pianist, Creator.</h4>
+              <h2 className="name">{name}</h2>
+              <h4 className="tagline">{tagline}</h4>
             </div>
           </div>
-          <div className="description">
-            Chelsea Vuong is a student at Harvard University majoring in
-            Economics and minoring in Global Health and Health Policy.{" "}
-          </div>
+          <div className="description">{description}</div>
         </div>
         <br />
         <div className="links">
-          <a href="mailto:chelseavuongmao@gmail.com" target="_blank">
+          <a href={`mailto:${emailAddress}`} target="_blank">
             <FaInbox /> email
           </a>
-          <a href="https://www.facebook.com/chelsea.vuong.7" target="_blank">
+          <a href={facebookLink} target="_blank">
             <FaFacebookSquare /> facebook
           </a>
-          <a href="https://www.instagram.com/chelseavuong/" target="_blank">
+          <a href={instagramLink} target="_blank">
             <FaInstagram /> instagram
           </a>
-          <a
-            href="https://www.linkedin.com/in/chelsea-vuong-6a3b12132/"
-            target="_blank"
-          >
+          <a href={linkedinLink} target="_blank">
             <FaLinkedin /> linkedin
           </a>
         </div>
@@ -141,4 +148,32 @@ const Footer = class extends React.Component {
   }
 };
 
-export default Footer;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query Footer {
+        markdownRemark(frontmatter: { templateKey: { eq: "footer-page" } }) {
+          html
+          frontmatter {
+            title
+            facebookLink
+            instagramLink
+            emailAddress
+            linkedinLink
+            tagline
+            name
+            description
+            profileImage {
+              childImageSharp {
+                fluid(maxWidth: 120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={(data, count) => <Footer data={data} />}
+  />
+);

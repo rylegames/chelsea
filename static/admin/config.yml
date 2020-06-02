@@ -153,6 +153,27 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
 
+      - file: "src/pages/footer/index.md"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "footer-page",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Facebook Link", name: "facebookLink", widget: "string" }
+          - { label: "Instagram Link", name: "instagramLink", widget: "string" }
+          - { label: "Email Address", name: "emailAddress", widget: "string" }
+          - { label: "LinkedIn Link", name: "linkedinLink", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Profile Pic", name: profileImage, widget: image }
+
       - file: "src/pages/press/index.md"
         label: "Press Page"
         name: "press"
@@ -183,7 +204,7 @@ collections:
                       [
                         { label: Image, name: image, widget: image },
                         { label: Text, name: text, widget: text },
-                        { label: Link, name: link, widget: text },
+                        { label: Link, name: link, widget: string },
                       ],
                   },
                 ],

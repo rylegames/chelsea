@@ -18,10 +18,9 @@ FooterPageTemplate.propTypes = {
   contentComponent: PropTypes.func,
 };
 
-const FooterPage = ({ data }) => {
+const FooterPage = (data) => {
   const { markdownRemark: post } = data;
-
-  return <FooterPageTemplate data={data} />;
+  return <FooterPageTemplate />;
 };
 
 FooterPage.propTypes = {
@@ -31,11 +30,25 @@ FooterPage.propTypes = {
 export default FooterPage;
 
 export const aboutPageQuery = graphql`
-  query FooterPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query FooterPage {
+    markdownRemark(frontmatter: { templateKey: { eq: "footer-page" } }) {
       html
       frontmatter {
         title
+        facebookLink
+        instagramLink
+        emailAddress
+        linkedinLink
+        tagline
+        name
+        description
+        profileImage {
+          childImageSharp {
+            fluid(maxWidth: 120, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
