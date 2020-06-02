@@ -1,4 +1,5 @@
 import React from "react";
+import { StaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 
@@ -36,4 +37,36 @@ FeatureGrid.propTypes = {
   ),
 };
 
-export default FeatureGrid;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query Features {
+        markdownRemark(frontmatter: { templateKey: { eq: "press-page" } }) {
+          html
+          frontmatter {
+            intro {
+              blurbs {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 240, quality: 64) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                link
+                text
+              }
+              heading
+              description
+            }
+          }
+        }
+      }
+    `}
+    render={(data, count) => {
+      return (
+        <FeatureGrid gridItems={data.markdownRemark.frontmatter.intro.blurbs} />
+      );
+    }}
+  />
+);

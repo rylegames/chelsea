@@ -23,7 +23,8 @@ import {
 } from "react-icons/fa";
 
 const style = css`
-  margin: 0 auto;
+  border-top: 1px solid lightgrey;
+  margin: 0px auto 0;
   width: 100%;
   max-width: 680px;
   padding: 0 20px;
@@ -31,6 +32,17 @@ const style = css`
 
   .profile {
     .info {
+      display: flex;
+      padding-top: 20px;
+      margin-bottom: 20px;
+
+      img {
+        object-fit: cover;
+        width: 80px;
+        height: 80px;
+        margin-right: 20px;
+      }
+
       .tagline {
         font-size: 20px;
       }
@@ -96,7 +108,13 @@ const Footer = class extends React.Component {
       <div css={style} className="container content">
         <div className="profile">
           <div className="info">
-            <img />
+            <img
+              src={`${
+                !!profileImage.childImageSharp
+                  ? profileImage.childImageSharp.fluid.src
+                  : profileImage
+              }`}
+            />
             <div>
               <h2 className="name">{name}</h2>
               <h4 className="tagline">{tagline}</h4>
@@ -135,8 +153,7 @@ const Footer = class extends React.Component {
           </Link>
         </div>
         <br />
-        <br />
-        ©2020 <Link to="/">Chelsea Vuong</Link> and site created by{" "}
+        <br />©<Link to="/">Chelsea Vuong</Link> and site created by{" "}
         <a href="https://ryanylee.com" target="_blank">
           Ryan Y. Lee
         </a>

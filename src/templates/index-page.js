@@ -32,18 +32,29 @@ export const IndexPageTemplate = ({
         !!image.childImageSharp ? image.childImageSharp.fluid.src : image
       }`}
     />
-    <h1>{title}</h1>
-    <h3>{subheading}</h3>
-    <h1 className="title">{mainpitch.title}</h1>
-    <h3 className="subtitle">{mainpitch.description}</h3>
-    <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
-    <p>{description}</p>
+    <div style={{ textAlign: "center" }}>{title}</div>
+    <div style={{ textAlign: "center" }}>{subheading}</div>
+    <br />
+    <div className="content">
+      <div className="tile">
+        <h1 className="title">{mainpitch.title}</h1>
+      </div>
+      <div className="tile">
+        <h3 className="subtitle">{mainpitch.description}</h3>
+      </div>
+    </div>
+    <div className="columns">
+      <div className="column is-12">
+        <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
+        <p>{description}</p>
+      </div>
+    </div>
     <h1>Blog</h1>
     <BlogRoll featuredOnly />
     <h1>Projects</h1>
     <ProjectRoll />
     <h1>Press</h1>
-    <Features gridItems={intro.blurbs} />
+    <Features />
   </div>
 );
 
@@ -106,21 +117,6 @@ export const pageQuery = graphql`
           description
         }
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-            link
-          }
-          heading
-          description
-        }
       }
     }
   }

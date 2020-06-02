@@ -43,9 +43,6 @@ export const PressPageTemplate = ({
     <PreviewCompatibleImage imageInfo={main.image3} />
     <Features gridItems={intro.blurbs} />
     <Testimonials testimonials={testimonials} />
-    <h2>{pricing.heading}</h2>
-    <p>{pricing.description}</p>
-    <Pricing data={pricing.plans} />
   </div>
 );
 
@@ -66,11 +63,6 @@ PressPageTemplate.propTypes = {
   }),
   testimonials: PropTypes.array,
   fullImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  pricing: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-    plans: PropTypes.array,
-  }),
 };
 
 const PressPage = ({ data }) => {
@@ -87,7 +79,6 @@ const PressPage = ({ data }) => {
         main={frontmatter.main}
         testimonials={frontmatter.testimonials}
         fullImage={frontmatter.full_image}
-        pricing={frontmatter.pricing}
       />
     </Layout>
   );
@@ -175,16 +166,6 @@ export const pressPageQuery = graphql`
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
             }
-          }
-        }
-        pricing {
-          heading
-          description
-          plans {
-            description
-            items
-            plan
-            price
           }
         }
       }

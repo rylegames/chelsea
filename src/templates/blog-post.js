@@ -35,6 +35,7 @@ export const BlogPostTemplate = ({
       </h1>
       <p>{description}</p>
       <PostContent content={content} />
+      <br />
       {tags && tags.length && (
         <div>
           <h4>Tags</h4>

@@ -14,8 +14,13 @@ const style = css`
     padding: 30px 20px;
     border-bottom: 1px solid lightgrey;
 
-    &:first-of-type {
-      border-top: 1px solid lightgrey;
+    &:hover {
+      background: lightgrey;
+      color: white;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
     }
   }
 `;
